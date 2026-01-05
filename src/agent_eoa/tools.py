@@ -11,6 +11,21 @@ calendar_db = {
     "2023-10-21": [] 
 }
 
+# Mock Budget
+# สมมติว่ามีงบเหลือ 5,000 บาท
+project_budget = {"remaining": 5000}
+
+@tool
+def check_budget(estimated_cost: int) -> str:
+    """
+    Checks if there is enough budget for the event.
+    Input: estimated_cost (Integer)
+    """
+    remaining = project_budget["remaining"]
+    if estimated_cost > remaining:
+        return f"Budget Rejected: Insufficient funds. Cost {estimated_cost} exceeds remaining {remaining}."
+    return f"Budget Approved: Cost {estimated_cost} is within limit. Remaining: {remaining}."
+
 @tool
 def check_calendar_availability(date: str) -> str:
     """Checks if a specific date is available for an event."""

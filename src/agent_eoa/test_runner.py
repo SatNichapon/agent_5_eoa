@@ -30,7 +30,7 @@ def run_batch_tests():
     logger.info(f"🚀 STARTING BATCH TEST RUN")
     logger.info(f"📂 Input: {INPUT_FILE}")
     logger.info(f"📂 Output: {OUTPUT_FILE}")
-    logger.info("="*60)
+    logger.info("="*120)
 
     # 1. Load Test Cases
     try:
@@ -48,7 +48,7 @@ def run_batch_tests():
         logger.info(f"\n🔹 TEST CASE: {case_id} - {case.get('name')}")
         logger.info(f"📝 Prompt: {prompt}")
         logger.info(f"🎯 Expectation: {case.get('expected_behavior')}")
-        logger.info("-" * 30)
+        logger.info("-" * 90)
 
         inputs = {"messages": [HumanMessage(content=prompt)]}
         step_count = 0
@@ -76,7 +76,7 @@ def run_batch_tests():
 
         logger.info(f"✅ Case {case_id} Finished in {step_count} steps.\n")
 
-    logger.info("="*60)
+    logger.info("="*120)
     logger.info("🏁 ALL TESTS COMPLETED")
 
 if __name__ == "__main__":

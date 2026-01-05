@@ -1,14 +1,14 @@
 [
   {
     "id": "TC-001",
-    "name": "Schedule Conflict Test",
-    "prompt": "I need to book the 'Workshop 9' on 2023-10-20 at 10:00. If that time is busy, please find the next available slot in the afternoon and book it.",
-    "expected_behavior": "Should detect busy slot and re-book for 13:00 or later."
+    "name": "Schedule Conflict Test (ตารางทับซ้อน)",
+    "prompt": "I need to book 'Workshop 9' on 2023-10-20 at 10:00. If busy, find the next available slot in the afternoon.",
+    "expected_behavior": "Agent should detect 10:00 is busy and automatically propose/book 13:00 instead."
   },
   {
     "id": "TC-002",
-    "name": "Simple Booking Test",
-    "prompt": "Book a team meeting on 2023-10-21 at 09:00.",
-    "expected_behavior": "Should book immediately without conflict."
+    "name": "Hybrid Event Notification Test (แจ้งเตือน + งบประมาณ)",
+    "prompt": "Set up a 'Hybrid Workshop' on 2023-10-21 at 09:00 with a budget of 3000 baht. Send an email invitation to 'student@tu.ac.th' with the subject 'Hybrid Meeting Link'.",
+    "expected_behavior": "Agent should Check Budget (Approved) -> Check Calendar (Free) -> Book Venue -> Send Email."
   }
 ]

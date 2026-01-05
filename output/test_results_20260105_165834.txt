@@ -1,0 +1,31 @@
+2026-01-05 16:58:34,433 - 🚀 STARTING BATCH TEST RUN
+2026-01-05 16:58:34,433 - 📂 Input: C:\Users\SatNichapon\storemesh\living_lab\code\agent_5_eoa\input\test_cases.json
+2026-01-05 16:58:34,434 - 📂 Output: C:\Users\SatNichapon\storemesh\living_lab\code\agent_5_eoa\output\test_results_20260105_165834.txt
+2026-01-05 16:58:34,434 - ========================================================================================================================
+2026-01-05 16:58:34,434 - 
+🔹 TEST CASE: TC-001 - Schedule Conflict Test (ตารางทับซ้อน)
+2026-01-05 16:58:34,436 - 📝 Prompt: I need to book 'Workshop 9' on 2023-10-20 at 10:00. If busy, find the next available slot in the afternoon.
+2026-01-05 16:58:34,436 - 🎯 Expectation: Agent should detect 10:00 is busy and automatically propose/book 13:00 instead.
+2026-01-05 16:58:34,436 - ------------------------------------------------------------------------------------------
+2026-01-05 16:58:37,346 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 16:58:37,362 -    🤖 [PLANNER] Decided to use Tool: check_calendar_availability
+2026-01-05 16:58:37,374 - Tool Call: Checking calendar for 2023-10-20
+2026-01-05 16:58:37,380 -    🛠️  [TOOL OUTPUT] Date 2023-10-20 has busy slots at: 10:00, 11:00.
+2026-01-05 16:58:38,338 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 16:58:38,348 -    🤖 [PLANNER] Final Answer: I'm sorry, but the 2023-10-20 is busy at 10:00. The next available slot in the afternoon is 13:00. Would you like to book it?
+2026-01-05 16:58:38,350 - ✅ Case TC-001 Finished in 3 steps.
+
+2026-01-05 16:58:38,352 - 
+🔹 TEST CASE: TC-002 - Hybrid Event Notification Test (แจ้งเตือน + งบประมาณ)
+2026-01-05 16:58:38,353 - 📝 Prompt: Set up a 'Hybrid Workshop' on 2023-10-21 at 09:00 with a budget of 3000 baht. Send an email invitation to 'student@tu.ac.th' with the subject 'Hybrid Meeting Link'.
+2026-01-05 16:58:38,354 - 🎯 Expectation: Agent should Check Budget (Approved) -> Check Calendar (Free) -> Book Venue -> Send Email.
+2026-01-05 16:58:38,356 - ------------------------------------------------------------------------------------------
+2026-01-05 16:58:39,548 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 16:58:39,551 -    🤖 [PLANNER] Decided to use Tool: check_budget
+2026-01-05 16:58:39,554 -    🛠️  [TOOL OUTPUT] Budget Approved: Cost 3000 is within limit. Remaining: 5000.
+2026-01-05 16:58:40,365 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 16:58:40,378 -    🤖 [PLANNER] Final Answer: 
+2026-01-05 16:58:40,380 - ✅ Case TC-002 Finished in 3 steps.
+
+2026-01-05 16:58:40,381 - ========================================================================================================================
+2026-01-05 16:58:40,383 - 🏁 ALL TESTS COMPLETED
