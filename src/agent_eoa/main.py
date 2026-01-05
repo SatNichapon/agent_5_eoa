@@ -1,7 +1,7 @@
 import logging
 import sys
 from langchain_core.messages import HumanMessage
-from agent_eoa.workflow import graph
+from .workflow import graph
 
 # Configure Logging to show up in console
 logging.basicConfig(
