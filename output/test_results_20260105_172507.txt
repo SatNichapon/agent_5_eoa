@@ -1,0 +1,60 @@
+2026-01-05 17:25:07,969 - 🚀 STARTING BATCH TEST RUN
+2026-01-05 17:25:07,970 - 📂 Input: C:\Users\SatNichapon\storemesh\living_lab\code\agent_5_eoa\input\test_cases.json
+2026-01-05 17:25:07,971 - 📂 Output: C:\Users\SatNichapon\storemesh\living_lab\code\agent_5_eoa\output\test_results_20260105_172507.txt
+2026-01-05 17:25:07,971 - ========================================================================================================================
+2026-01-05 17:25:07,973 - 
+🔹 TEST CASE: TC-001 - Schedule Conflict Test (ตารางทับซ้อน)
+2026-01-05 17:25:07,975 - 📝 Prompt: I need to book 'Workshop 9' on 2023-10-20 at 10:00. If busy, find the next available slot in the afternoon.
+2026-01-05 17:25:07,976 - 🎯 Expectation: Agent should detect busy slot and re-book for 13:00.
+2026-01-05 17:25:07,977 - ------------------------------------------------------------------------------------------
+2026-01-05 17:25:08,790 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:08,834 -    🤖 [PLANNER] Decided to use Tool: check_calendar_availability
+2026-01-05 17:25:08,960 - Tool Call: Checking calendar for 2023-10-20
+2026-01-05 17:25:08,975 -    🛠️  [TOOL OUTPUT] Date 2023-10-20 has busy slots at: 10:00, 11:00.
+2026-01-05 17:25:09,911 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:09,929 -    🤖 [PLANNER] Decided to use Tool: book_venue
+2026-01-05 17:25:09,936 - Tool Call: Booking venue on 2023-10-20 at 13:00
+2026-01-05 17:25:09,937 - Simulated booking failure triggered.
+2026-01-05 17:25:09,939 -    🛠️  [TOOL OUTPUT] Error: Venue is unexpectedly under maintenance.
+2026-01-05 17:25:11,470 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:11,486 -    🤖 [PLANNER] Final Answer: I'm sorry, but it seems that 'Workshop 9' is unavailable on 2023-10-20 at 10:00 as it is already booked. Additionally, the venue is under maintenance in the afternoon. Please provide another date.
+2026-01-05 17:25:11,494 - ✅ Case TC-001 Finished in 5 steps.
+
+2026-01-05 17:25:11,497 - 
+🔹 TEST CASE: TC-002 - Hybrid Event Notification Test (แจ้งเตือน + งบผ่าน)
+2026-01-05 17:25:11,498 - 📝 Prompt: Set up a 'Hybrid Workshop' on 2023-10-21 at 09:00 with a budget of 3000 baht. Send invite to 'student@tu.ac.th'.
+2026-01-05 17:25:11,499 - 🎯 Expectation: Budget Approved -> Book -> Send Email.
+2026-01-05 17:25:11,502 - ------------------------------------------------------------------------------------------
+2026-01-05 17:25:12,201 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:12,223 -    🤖 [PLANNER] Decided to use Tool: check_budget
+2026-01-05 17:25:12,237 -    🛠️  [TOOL OUTPUT] Budget Approved: Cost 3000 is within limit. Remaining: 5000.
+2026-01-05 17:25:13,331 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:13,362 -    🤖 [PLANNER] Decided to use Tool: check_calendar_availability
+2026-01-05 17:25:13,373 - Tool Call: Checking calendar for 2023-10-21
+2026-01-05 17:25:13,387 -    🛠️  [TOOL OUTPUT] Date 2023-10-21 is completely free.
+2026-01-05 17:25:14,183 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:14,198 -    🤖 [PLANNER] Decided to use Tool: book_venue
+2026-01-05 17:25:14,218 - Tool Call: Booking venue on 2023-10-21 at 09:00
+2026-01-05 17:25:14,230 -    🛠️  [TOOL OUTPUT] Success: Venue booked for 2023-10-21 at 09:00.
+2026-01-05 17:25:15,325 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:15,343 -    🤖 [PLANNER] Decided to use Tool: send_email_invitation
+2026-01-05 17:25:15,362 - Tool Call: Sending email to student@tu.ac.th
+2026-01-05 17:25:15,390 -    🛠️  [TOOL OUTPUT] Success: Sent 1 invitations.
+2026-01-05 17:25:16,184 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:16,208 -    🤖 [PLANNER] Final Answer: The event 'Hybrid Workshop' is set up for 2023-10-21 at 09:00. The budget is approved and the venue is booked. An invitation has been sent to student@tu.ac.th.
+2026-01-05 17:25:16,210 - ✅ Case TC-002 Finished in 9 steps.
+
+2026-01-05 17:25:16,212 - 
+🔹 TEST CASE: TC-003 - Budget Failure Simulation (จำลองงบไม่พอ)
+2026-01-05 17:25:16,214 - 📝 Prompt: Organize a 'Grand Gala' on 2023-10-21 at 18:00. The estimated cost is 10000 baht. Check budget first.
+2026-01-05 17:25:16,219 - 🎯 Expectation: Agent should STOP after budget check fails and inform the user.
+2026-01-05 17:25:16,223 - ------------------------------------------------------------------------------------------
+2026-01-05 17:25:17,179 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:17,200 -    🤖 [PLANNER] Decided to use Tool: check_budget
+2026-01-05 17:25:17,229 -    🛠️  [TOOL OUTPUT] Budget Rejected: Insufficient funds. Cost 10000 exceeds remaining 5000.
+2026-01-05 17:25:19,431 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+2026-01-05 17:25:19,450 -    🤖 [PLANNER] Final Answer: The budget is rejected because the estimated cost of 10000 baht exceeds the remaining budget of 5000 baht. Therefore, the event cannot be organized.
+2026-01-05 17:25:19,454 - ✅ Case TC-003 Finished in 3 steps.
+
+2026-01-05 17:25:19,456 - ========================================================================================================================
+2026-01-05 17:25:19,458 - 🏁 ALL TESTS COMPLETED
