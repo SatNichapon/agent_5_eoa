@@ -19,7 +19,7 @@ class AgentState(TypedDict):
 
 # 2. Tools & LLM
 tools = [check_calendar_availability, book_venue, send_email_invitation]
-llm = ChatGoogleGenerativeAI(model=settings.MODEL_NAME, temperature=0)
+llm = ChatGoogleGenerativeAI(model=settings.MODEL_NAME, google_api_key=settings.GOOGLE_API_KEY, temperature=0)
 llm_with_tools = llm.bind_tools(tools)
 
 # 3. Nodes

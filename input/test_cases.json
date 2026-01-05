@@ -1,0 +1,14 @@
+[
+  {
+    "id": "TC-001",
+    "name": "Schedule Conflict Test",
+    "prompt": "I need to book the 'Workshop 9' on 2023-10-20 at 10:00. If that time is busy, please find the next available slot in the afternoon and book it.",
+    "expected_behavior": "Should detect busy slot and re-book for 13:00 or later."
+  },
+  {
+    "id": "TC-002",
+    "name": "Simple Booking Test",
+    "prompt": "Book a team meeting on 2023-10-21 at 09:00.",
+    "expected_behavior": "Should book immediately without conflict."
+  }
+]
