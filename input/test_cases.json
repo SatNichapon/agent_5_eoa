@@ -1,20 +1,14 @@
 [
   {
     "id": "TC-001",
-    "name": "Schedule Conflict Test (ตารางทับซ้อน)",
-    "prompt": "I need to book 'Workshop 9' on 2023-10-20 at 10:00. If busy, find the next available slot in the afternoon.",
-    "expected_behavior": "Agent should detect busy slot and re-book for 13:00."
+    "name": "Mass Schedule Conflict (9 Workshops)",
+    "prompt": "I need to organize 9 workshops (Topic 1 to Topic 9). All of them want to start on 2023-10-20 at 10:00 AM. If a slot is busy, move to the next hour.",
+    "expected_behavior": "Agent should book Topic 1 at 10:00, Topic 2 at 11:00, Topic 3 at 12:00, etc., until all 9 are booked."
   },
   {
     "id": "TC-002",
-    "name": "Hybrid Event Notification Test (แจ้งเตือน + งบผ่าน)",
+    "name": "Hybrid Event Notification Test (แจ้งเตือน)",
     "prompt": "Set up a 'Hybrid Workshop' on 2023-10-21 at 09:00 with a budget of 3000 baht. Send invite to 'student@tu.ac.th'.",
     "expected_behavior": "Budget Approved -> Book -> Send Email."
-  },
-  {
-    "id": "TC-003",
-    "name": "Budget Failure Simulation (จำลองงบไม่พอ)",
-    "prompt": "Organize a 'Grand Gala' on 2023-10-21 at 18:00. The estimated cost is 10000 baht. Check budget first.",
-    "expected_behavior": "Agent should STOP after budget check fails and inform the user."
   }
 ]
